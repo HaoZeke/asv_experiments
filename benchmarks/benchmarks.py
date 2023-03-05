@@ -1,6 +1,20 @@
 # Write the benchmarking functions here.
 # See "Writing benchmarks" in the asv docs for more information.
 
+import numpy as np
+
+class MyBenchmark:
+    params = [10, 100, 1000]
+
+    def setup(self, n):
+        self.data = np.random.rand(n)
+
+    def time_sort(self, n):
+        np.sort(self.data)
+
+    def time_sum(self, n):
+        np.sum(self.data)
+
 
 class TimeSuite:
     """
