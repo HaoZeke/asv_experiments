@@ -15,6 +15,9 @@ class MyBenchmark:
     def time_sum(self, n):
         np.sum(self.data)
 
+    # def time_fake_fail(self, n):
+    #     import someone
+
 
 class TimeSuite:
     """
@@ -39,7 +42,32 @@ class TimeSuite:
         for key in range(500):
             d[key]
 
+class Simple:
+    params = ([False, True])
+    param_names = ["ok"]
 
-class MemSuite:
-    def mem_list(self):
-        return [0] * 256
+    def time_failure(self, ok):
+        if ok:
+            x = 34.2**4.2
+        else:
+            # import something
+            raise NotImplementedError
+
+# class MemSuite:
+#     def mem_list(self):
+#         return [0] * 256
+
+class ParamSuite:
+    params = ['a', 'b', 'c']
+
+    def setup(self, p):
+        values = {'a': 1, 'b': 2, 'c': 3}
+        self.count = 0
+        self.value = values[p]
+
+    def track_value(self, p):
+        return self.value + self.count
+
+    def teardown(self, p):
+        self.count += 1
+        del self.value
