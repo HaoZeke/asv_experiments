@@ -1,7 +1,6 @@
 import numpy as np
 from asv_runner.benchmarks.mark import parameterize_class_with, skip_benchmark
 
-@skip_benchmark
 class TimeSuiteStandardSingle:
     params = [10, 100, 200]
     param_names = ["size"]
@@ -18,7 +17,6 @@ class TimeSuiteStandardSingle:
         for value in self.d.values():
             pass
 
-@skip_benchmark
 @parameterize_class_with({"size": [10, 100, 200]})
 class TimeSuiteDecoratorSingle:
     def setup(self, size):
@@ -34,7 +32,6 @@ class TimeSuiteDecoratorSingle:
         for value in self.d.values():
             pass
 
-@skip_benchmark
 class TimeSuiteMulti:
     params = ([10, 100], ['range', 'arange'])
     param_names = ['n', 'func_name']
@@ -43,7 +40,6 @@ class TimeSuiteMulti:
         for i in f(n):
             pass
 
-@skip_benchmark
 @parameterize_class_with({'n': [10, 100], 'func_name': ['range', 'arange']})
 class TimeSuiteMultiDecorator:
     def time_ranges(self, n, func_name):
