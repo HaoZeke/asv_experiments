@@ -1,12 +1,10 @@
 import numpy as np
 from asv_runner.benchmarks.mark import parameterize, timeout_at
 
-@timeout_at(0.001)
 @parameterize({"n":[10, 100]})
 def time_sort(n):
     np.sort(np.random.rand(n))
 
-@timeout_at(0.9)
 @parameterize({'n': [10, 100], 'func_name': ['range', 'arange']})
 def time_ranges_multi(n, func_name):
     f = {'range': range, 'arange': np.arange}[func_name]
@@ -30,7 +28,6 @@ class TimeSuiteDecoratorSingle:
         for value in self.d.values():
             pass
 
-@timeout_at(0.1)
 @parameterize({'n': [10, 100], 'func_name': ['range', 'arange']})
 class TimeSuiteMultiDecorator:
     def setup(self, n, func_name):
