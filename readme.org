@@ -1,0 +1,8 @@
+* About
+
+This is a simple repository meant to test out new ~asv~ and ~asv_runner~
+features.
+
+#+begin_src bash
+asv run -b params_decorator
+#+end_src
