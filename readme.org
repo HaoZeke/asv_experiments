@@ -6,3 +6,14 @@ features.
 #+begin_src bash
 asv run -b params_decorator
 #+end_src
+
+** Usage
+Wouldn't recommend it, but the current local development is to verbatim replace
+the ~asv_runner~ package in the generated environment:
+#+begin_src bash
+asv run
+# Watch it fail, now delete the folder within the environment
+rm -rf $HOME/QS/tests/Python/asv_experiments/.asv/env/2aee9b0c145a46b4d60c834802667a21/lib/python3.9/site-packages/asv_runner/
+# .. and copy the local variant
+cp -r $HOME/QS/asv_runner/asv_runner $HOME/QS/tests/Python/asv_experiments/.asv/env/2aee9b0c145a46b4d60c834802667a21/lib/python3.9/site-packages/asv_runner/
+#+end_src
