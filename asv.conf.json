@@ -44,11 +44,15 @@
     // If missing or the empty string, the tool will be automatically
     // determined by looking for tools on the PATH environment
     // variable.
-    "environment_type": "virtualenv",
+    "environment_type": "mamba",
+// asv run --launch-method spawn conda  176.49s user 157.46s system 234% cpu 2:22.64 total
+// asv run --launch-method spawn mamba  108.43s user 156.88s system 314% cpu 1:24.41 total
+// asv run --launch-method spawn virtualenv  95.81s user 154.61s system 419% cpu 59.643 total
+
 
     // timeout in seconds for installing any dependencies in environment
     // defaults to 10 min
-    //"install_timeout": 600,
+    // "install_timeout": 0.0006,
     // "default_benchmark_timeout": 0.02135,
 
     // the base URL to show a commit for the project.
@@ -96,7 +100,8 @@
     // },
     "matrix": {
         "req": {
-            "numpy": [""]
+            "numpy": [""],
+            "pip+asv_runner": ["-e $REPLACE_ME"]
         },
     },
 
