@@ -101,7 +101,6 @@
     "matrix": {
         "req": {
             "numpy": [""],
-            "pip+asv_runner": ["-e $REPLACE_ME"]
         },
     },
 

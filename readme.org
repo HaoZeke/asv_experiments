@@ -8,4 +8,20 @@ asv run -b params_decorator
 #+end_src
 
 ** Usage
-The current local development simply requires one to replace the ~$REPLACE_ME~ variable in the ~asv.conf.json~ with the full path.
+The current local development simply requires one to replace the ~$REPLACE_ME~
+variable in the ~asv.conf.json~ with the full path:
+
+#+begin_src json
+    "matrix": {
+        "req": {
+            "numpy": [""],
+            "pip+asv_runner": ["-e $REPLACE_ME"]
+        },
+    },
+#+end_src
+
+Or in an even simpler manner:
+
+#+begin_src bash
+ASV_RUNNER_PATH="$REPLACE_ME" asv run
+#+end_src
